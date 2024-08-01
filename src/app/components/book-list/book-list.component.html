@@ -1,10 +1,12 @@
 <h1>book-list works!</h1>
 
-<a routerLink="/add-book" >Add Book</a>
+<a routerLink="/add-book">Add Book</a>
 
 <ul>
-  <li  *ngFor="let book of books">
-    {{book.titre}} par {{book.auteur}} - description {{book.description}} - emprunté {{book.statut}}
+  <li *ngFor="let book of books | async">
+    {{ book.titre }} par {{ book.auteur }} - description
+    {{ book.description }} - emprunté {{ book.statut }}
 
     <button (click)="deleteBook(book.id)">Supprimer</button>
+  </li>
 </ul>
