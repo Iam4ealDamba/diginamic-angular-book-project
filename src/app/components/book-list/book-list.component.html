@@ -1,4 +1,4 @@
-<main class="flex flex-col gap-y-4 px-12 py-6 ">
+<main class="flex flex-col gap-y-4 px-12 py-6">
   <h1 class="text-2xl font-bold">Liste de livre</h1>
 
   <a routerLink="/add-book">Add Book</a>
@@ -18,7 +18,7 @@
         <p>{{ book.statut ? "Empruter" : "Disponible" }}</p>
       </div>
 
-      <button (click)="editBook(book.id)">Editer</button>
+      <a routerLink="/edit/{{ book.id }}">About</a>
       <button (click)="deleteBook(book.id)">Supprimer</button>
     </li>
   </ul>

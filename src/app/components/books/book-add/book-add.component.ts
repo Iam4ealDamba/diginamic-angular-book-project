@@ -22,7 +22,7 @@ import { BooksService } from '../../../services/books.service';
 })
 export class BookAddComponent {
   form = new FormGroup({
-    title: new FormControl(''),
+    titre: new FormControl(''),
     auteur: new FormControl(''),
     description: new FormControl(''),
   });
@@ -33,12 +33,12 @@ export class BookAddComponent {
 
   addBook() {
     if (
-      this.form.value.title &&
+      this.form.value.titre &&
       this.form.value.auteur &&
       this.form.value.description
     ) {
       const newBook = {
-        title: this.form.value.title,
+        titre: this.form.value.titre,
         auteur: this.form.value.auteur,
         description: this.form.value.description,
       };
@@ -46,7 +46,7 @@ export class BookAddComponent {
       this.bookService.add(newBook);
 
       this.form.value.auteur = '';
-      this.form.value.title = '';
+      this.form.value.titre = '';
       this.form.value.description = '';
 
       this.router.navigate(['/books']);
