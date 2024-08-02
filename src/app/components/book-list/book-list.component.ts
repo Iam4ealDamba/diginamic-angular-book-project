@@ -29,4 +29,12 @@ export class BookListComponent implements OnInit {
       this.books = this.bookService.all();
     });
   }
+
+  updateStatusBook(id: string) {
+    this.bookService.one(id).subscribe((book) => {
+      this.bookService.updateStatus(book).subscribe(() => {
+        this.books = this.bookService.all();
+      });
+    });
+  }
 }

@@ -1,7 +1,7 @@
+import { BookInterface } from './../interfaces/book.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BookInterface } from '../interfaces/book.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -31,12 +31,12 @@ export class BooksService {
   /** Add a new book
    * @param {Object} book - {titre, auteur, description} required
    */
-  public add(book: { titre: string; auteur: string; description: string }) {
+  public add(book: { titre: string|null; auteur: string|null; description: string|null }) {
     const newBook = {
       titre: book.titre,
       auteur: book.auteur,
       description: book.description,
-      statut: false,
+      statut: true,
     };
 
     return this.http.post<BookInterface[]>(this.url, newBook);
@@ -59,7 +59,12 @@ export class BooksService {
       statut: false,
     };
 
-    return this.http.put<BookInterface[]>(this.url + '/' + '1', newBook);
+    return this.http.put<BookInterface[]>(this.url + '/' + id, newBook);
+  }
+
+  public updateStatus(book: BookInterface) {
+    book.statut = !book.statut;
+    return this.http.put<BookInterface[]>(this.url + '/' + book.id, book);
   }
   public delete(id: string) {
     return this.http.delete<BookInterface[]>(this.url + '/' + id);

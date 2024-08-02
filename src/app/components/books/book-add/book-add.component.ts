@@ -4,7 +4,12 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { RouterModule, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { BooksService } from '../../../services/books.service';
 @Component({
@@ -22,9 +27,9 @@ import { BooksService } from '../../../services/books.service';
 })
 export class BookAddComponent {
   form = new FormGroup({
-    titre: new FormControl(''),
-    auteur: new FormControl(''),
-    description: new FormControl(''),
+    titre: new FormControl('', Validators.required),
+    auteur: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
   });
 
   faArrowLeft = faArrowLeft;
@@ -32,27 +37,14 @@ export class BookAddComponent {
   constructor(private bookService: BooksService, private router: Router) {}
 
   addBook() {
-    if (
-      this.form.value.titre &&
-      this.form.value.auteur &&
-      this.form.value.description
-    ) {
-      const newBook = {
-        titre: this.form.value.titre,
-        auteur: this.form.value.auteur,
-        description: this.form.value.description,
-      };
+    if (this.form.valid) {
+      this.bookService.add(this.form.getRawValue()).subscribe(() => {
+        this.form.value.auteur = '';
+        this.form.value.titre = '';
+        this.form.value.description = '';
 
-      this.bookService.add(newBook);
-
-      this.form.value.auteur = '';
-      this.form.value.titre = '';
-      this.form.value.description = '';
-
-      this.router.navigate(['/books']);
+        this.router.navigate(['/']);
+      });
     }
-  }
-  goBack() {
-    this.router.navigate(['/']);
   }
 }

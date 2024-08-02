@@ -2,7 +2,7 @@
   "books": [
     {
       "id": "1",
-      "titre": "Book One",
+      "titre": "Book",
       "auteur": "Author One",
       "description": "Description for Book One",
       "statut": false
