@@ -1,33 +1,36 @@
-<a href="/" class="flex gap-x-4 font-bold"
-  ><fa-icon [icon]="faArrowLeft"></fa-icon> Revenir en arrière</a
->
+<a href="/" class="text-xl flex gap-x-4 font-bold items-center">
+  <fa-icon [icon]="faArrowLeft" class="text-blue-500"></fa-icon> Revenir en arrière
+</a>
 
-<form [formGroup]="bookForm" (ngSubmit)="edit()">
-  <div class="form-group">
-    <label for="titre">titre</label>
+<form [formGroup]="bookForm" (ngSubmit)="edit()" class="max-w-lg mx-auto mt-8">
+  <div class="form-group mb-4">
+    <label for="titre" class="block text-gray-700 font-semibold mb-2">Titre</label>
     <input
       type="text"
-      class="form-control"
+      class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
       id="titre"
       formControlName="titre"
     />
   </div>
-  <div class="form-group">
-    <label for="auteur">Author</label>
+  <div class="form-group mb-4">
+    <label for="auteur" class="block text-gray-700 font-semibold mb-2">Auteur</label>
     <input
       type="text"
-      class="form-control"
+      class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
       id="auteur"
       formControlName="auteur"
     />
   </div>
-  <div class="form-group">
-    <label for="description">Description</label>
+  <div class="form-group mb-4">
+    <label for="description" class="block text-gray-700 font-semibold mb-2">Description</label>
     <textarea
-      class="form-control"
+      class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
       id="description"
       formControlName="description"
+      rows="5"
     ></textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="bg-green-700 text-white font-semibold px-4 py-2 rounded-md shadow hover:bg-green-800 transition duration-200">
+    Submit
+  </button>
 </form>
