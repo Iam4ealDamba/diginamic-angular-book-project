@@ -1,3 +1,11 @@
 {
-  "books": []
+  "books": [
+    {
+      "id": "1",
+      "titre": "Book One",
+      "auteur": "Author One",
+      "description": "Description for Book One",
+      "status": true
+    }
+  ]
 }

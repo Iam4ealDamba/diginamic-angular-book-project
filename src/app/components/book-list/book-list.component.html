@@ -1,12 +1,25 @@
-<h1>book-list works!</h1>
+<main class="flex flex-col gap-y-4 px-12 py-6 ">
+  <h1 class="text-2xl font-bold">Liste de livre</h1>
 
-<a routerLink="/add-book">Add Book</a>
+  <a routerLink="/add-book">Add Book</a>
 
-<ul>
-  <li *ngFor="let book of books | async">
-    {{ book.titre }} par {{ book.auteur }} - description
-    {{ book.description }} - emprunté {{ book.statut }}
+  <ul>
+    <li *ngFor="let book of books | async">
+      <div>
+        <h3>Titre:</h3>
+        <p>{{ book.titre }}</p>
+      </div>
+      <div>
+        <h3>Auteur:</h3>
+        <p>{{ book.auteur }}</p>
+      </div>
+      <div>
+        <h3>Status:</h3>
+        <p>{{ book.statut ? "Empruter" : "Disponible" }}</p>
+      </div>
 
-    <button (click)="deleteBook(book.id)">Supprimer</button>
-  </li>
-</ul>
+      <button (click)="editBook(book.id)">Editer</button>
+      <button (click)="deleteBook(book.id)">Supprimer</button>
+    </li>
+  </ul>
+</main>
