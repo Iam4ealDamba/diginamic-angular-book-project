@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BookInterface } from '../../interfaces/book.interface';
 import { BooksService } from '../../services/books.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'digi-book-list',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, RouterLink],
   providers: [BooksService, Router],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.scss',
@@ -22,10 +22,6 @@ export class BookListComponent implements OnInit {
 
   ngOnInit() {
     this.books = this.bookService.all();
-  }
-
-  editBook(id: string) {
-    this.router.navigate(['/edit/', id]);
   }
 
   deleteBook(id: string) {

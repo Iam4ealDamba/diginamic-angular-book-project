@@ -1,8 +1,8 @@
-<section>
-  <div>
-    <a href="/"><fa-icon [icon]="faArrowLeft"></fa-icon> Revenir en arrière</a>
+<main class="">
+  <div class="">
+    <a href="/" class="flex gap-x-4 font-bold"><fa-icon [icon]="faArrowLeft"></fa-icon> Revenir en arrière</a>
   </div>
-  <div aria-label="title"><h1>Ajouter un livre</h1></div>
+  <div aria-label="titre"><h1>Ajouter un livre</h1></div>
   <form [formGroup]="form" (ngSubmit)="addBook()">
     <div aria-label="inputs">
       <div aria-label="input">
@@ -39,4 +39,4 @@
       <button type="submit">Ajouter le livre</button>
     </div>
   </form>
-</section>
+</main>
