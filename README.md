@@ -1,27 +1,57 @@
-# BookProject
+# Projet Diginamic - Angular Book
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+- Binôme groupe: Jordi, Frédéric
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### Bienvenue sur notre projet de gestion de livre !
 
-## Code scaffolding
+Vous pourrez retrouver ci-dessous une explication plus complète du projet, de son installation et de sa mise en route.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##### 1) Détail du projet
 
-## Build
+Le projet est composé de plusieurs dossiers :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Components: qui va gérer nos différents composants (book list, book add, etc...)
+- Services: ce dossier sert à gérer les services associés à nos composants.
+- Interfaces: il contient les interfaces pour nos composants.
+- Data: ce dossier contient la base de données de l'application en fichier JSON.
 
-## Running unit tests
+##### 2) Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Pour installer le projet, vous pouvez soit utiliser YARN, soit NPM selon votre préférence :
 
-## Running end-to-end tests
+```bash
+# Installation avec Yarn
+yarn install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Installation avec NPM
+npm install
+```
 
-## Further help
+Pour les dépendances, voici une liste de celles qui ont été mises en place :
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```json
+  "@fortawesome/angular-fontawesome": "^0.15.0",
+  "@fortawesome/free-solid-svg-icons": "^6.6.0",
+  "json-server": "^1.0.0-beta.1",
+  "autoprefixer": "^10.4.19",
+  "postcss": "^8.4.40",
+  "tailwindcss": "^3.4.7",
+```
+
+##### 3) Mise en route
+
+Enfin, pour lancer le projet, il sera important de bien ouvrir deux terminaux afin d'avoir d'un côté Angular qui tourne avec la commande ci-dessous:
+
+```bash
+# Démarrer le serveur angular
+ng serve
+```
+
+Ainsi que cette autre commande ci-dessous sur le deuxième terminal afin de démarrer le serveur de json-server pour la base de données:
+
+```bash
+# Démarrer json-server
+npx json-server ./data/db.json
+```

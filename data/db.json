@@ -1,0 +1,11 @@
+{
+  "books": [
+    {
+      "id": "3f7e",
+      "titre": "Fondation",
+      "auteur": "Isaac Azimov",
+      "description": "Le cycle de fondation",
+      "statut": true
+    }
+  ]
+}

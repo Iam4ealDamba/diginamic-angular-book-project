@@ -1,0 +1,49 @@
+<main>
+  <a href="/" class="text-xl flex gap-x-4 font-bold items-center">
+    <fa-icon [icon]="faArrowLeft" class="text-blue-500"></fa-icon> Revenir en
+    arrière
+  </a>
+
+  <div aria-label="titre" class="text-center text-3xl font-semibold">
+    <h1>Detail du livre</h1>
+  </div>
+
+  <form class="max-w-lg mx-auto mt-8">
+    <div class="form-group mb-4">
+      <label class="block text-gray-700 font-semibold mb-2">Titre</label>
+      <input
+        type="text"
+        value="{{ book?.titre }}"
+        class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+        disabled
+      />
+    </div>
+    <div class="form-group mb-4">
+      <label class="block text-gray-700 font-semibold mb-2">Auteur</label>
+      <input
+        type="text"
+        value="{{ book?.auteur }}"
+        class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+        disabled
+      />
+    </div>
+    <div class="form-group mb-4">
+      <label class="block text-gray-700 font-semibold mb-2">Description</label>
+      <textarea
+        class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+        [value]="book?.description"
+        rows="5"
+        disabled
+      ></textarea>
+    </div>
+    <div class="form-group mb-4">
+      <label class="block text-gray-700 font-semibold mb-2">Status</label>
+      <input
+        type="text"
+        value="{{ book?.statut ? 'Disponible' : 'Emprunté' }}"
+        class="form-control w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+        disabled
+      />
+    </div>
+  </form>
+</main>
