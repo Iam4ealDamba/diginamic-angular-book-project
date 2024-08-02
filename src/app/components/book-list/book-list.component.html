@@ -35,6 +35,11 @@
           {{ book.statut ? "Emprunter le livre" : "Rendre le livre" }}
         </button>
         <a
+          routerLink="/detail/{{ book.id }}"
+          class="text-blue-500 hover:text-blue-700 font-semibold"
+          >Voir Detail</a
+        >
+        <a
           routerLink="/edit/{{ book.id }}"
           class="text-blue-500 hover:text-blue-700 font-semibold"
           >Editer</a
