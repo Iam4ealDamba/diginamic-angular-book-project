@@ -1,37 +1,51 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 import { BooksService } from '../../../services/books.service';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { BookInterface } from '../../../interfaces/book.interface';
+import {
+  ReactiveFormsModule,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'digi-book-edit',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule, RouterModule],
-  providers: [BooksService],
+  imports: [
+    FontAwesomeModule,
+    CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule,
+  ],
+  providers: [BooksService, Router],
   templateUrl: './book-edit.component.html',
   styleUrl: './book-edit.component.scss',
 })
 export class EditBookComponent implements OnInit {
   bookForm = new FormGroup({
-    titre: new FormControl(''),
-    auteur: new FormControl(''),
-    description: new FormControl(''),
+    titre: new FormControl('', Validators.required),
+    auteur: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
   });
   id: string = '';
-  book: Observable<BookInterface>;
+  faArrowLeft = faArrowLeft;
 
-  activatedRoute: ActivatedRoute = inject(ActivatedRoute);
-
-  constructor(private bookService: BooksService, private router: Router) {
+  constructor(
+    private bookService: BooksService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
     this.id = this.activatedRoute.snapshot.params['id'];
-
-    this.book = this.bookService.one(this.id);
   }
   ngOnInit(): void {
-    this.book.subscribe((book) => {
+    const book = this.bookService.one(this.id);
+    book.subscribe((book) => {
       this.bookForm.setValue({
         titre: book!.titre,
         auteur: book!.auteur,
@@ -41,18 +55,10 @@ export class EditBookComponent implements OnInit {
   }
 
   edit() {
-    if (
-      this.bookForm.value.titre &&
-      this.bookForm.value.auteur &&
-      this.bookForm.value.description
-    ) {
-      const updatedBook = {
-        titre: this.bookForm.value.titre,
-        auteur: this.bookForm.value.auteur,
-        description: this.bookForm.value.description,
-      };
-      this.bookService.update(this.id, updatedBook);
-      this.router.navigate(['/books']);
-    }
+    this.bookService
+      .update(this.id, this.bookForm.getRawValue())
+      .subscribe(() => {
+        this.router.navigateByUrl('');
+      });
   }
 }

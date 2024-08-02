@@ -5,7 +5,7 @@
       "titre": "Book One",
       "auteur": "Author One",
       "description": "Description for Book One",
-      "status": true
+      "statut": false
     }
   ]
 }
