@@ -43,16 +43,23 @@ export class BooksService {
   }
   public update(
     id: string,
-    book: { titre: string; auteur: string; description: string }
+    book: {
+      titre: string | null;
+      auteur: string | null;
+      description: string | null;
+    }
   ) {
+    console.log(book);
+
     const newBook = {
+      id: id,
       titre: book.titre,
       auteur: book.auteur,
       description: book.description,
       statut: false,
     };
 
-    return this.http.put<BookInterface[]>(this.url + '/' + id, newBook);
+    return this.http.put<BookInterface[]>(this.url + '/' + '1', newBook);
   }
   public delete(id: string) {
     return this.http.delete<BookInterface[]>(this.url + '/' + id);

@@ -52,4 +52,7 @@ export class BookAddComponent {
       this.router.navigate(['/books']);
     }
   }
+  goBack() {
+    this.router.navigate(['/']);
+  }
 }

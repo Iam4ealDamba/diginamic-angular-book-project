@@ -1,16 +1,33 @@
-<h1>book-edit works!</h1>
+<a href="/" class="flex gap-x-4 font-bold"
+  ><fa-icon [icon]="faArrowLeft"></fa-icon> Revenir en arrière</a
+>
+
 <form [formGroup]="bookForm" (ngSubmit)="edit()">
   <div class="form-group">
     <label for="titre">titre</label>
-    <input type="text" class="form-control" id="titre" formControlName="titre">
+    <input
+      type="text"
+      class="form-control"
+      id="titre"
+      formControlName="titre"
+    />
   </div>
   <div class="form-group">
     <label for="auteur">Author</label>
-    <input type="text" class="form-control" id="auteur" formControlName="auteur">
+    <input
+      type="text"
+      class="form-control"
+      id="auteur"
+      formControlName="auteur"
+    />
   </div>
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" formControlName="description"></textarea>
+    <textarea
+      class="form-control"
+      id="description"
+      formControlName="description"
+    ></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

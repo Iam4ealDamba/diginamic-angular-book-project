@@ -1,6 +1,9 @@
 <main class="">
   <div class="">
-    <a href="/" class="flex gap-x-4 font-bold"><fa-icon [icon]="faArrowLeft"></fa-icon> Revenir en arrière</a>
+    <a href="/" class="flex gap-x-4 font-bold"
+      ><fa-icon [icon]="faArrowLeft"></fa-icon> Revenir en arrière</a
+    >
+    <button (click)="goBack()">goback</button>
   </div>
   <div aria-label="titre"><h1>Ajouter un livre</h1></div>
   <form [formGroup]="form" (ngSubmit)="addBook()">
